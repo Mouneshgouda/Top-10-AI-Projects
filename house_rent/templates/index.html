@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: url('your_background_image.jpg') center fixed;
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login {
+            background-color: rgba(255, 255, 255, 0.8); /* Add a semi-transparent white background to the form */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .login h1 {
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login">
+        <h1>Prediction of House Rent</h1>
+        <form action="{{ url_for('predict')}}" method="post">
+            <input type="text" name="city" placeholder="Name of the City" required="required" /><br><br>
+            <input type="text" name="type" placeholder="Type of house" required="required" /><br><br>
+            <input type="text" name="bhk" placeholder="No.of rooms" required="required" /><br><br>
+
+            <button type="submit">Predict</button><br>
+        </form>
+
+        <br>
+        <br>
+        {{ prediction_text }}
+    </div>
+</body>
+
+</html>
