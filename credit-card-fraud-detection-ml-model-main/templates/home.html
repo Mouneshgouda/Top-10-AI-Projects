@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transaction Information</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f4;
+      text-align: center;
+      margin: 50px;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    h2 {
+      color: #555;
+    }
+
+    form {
+      max-width: 400px;
+      margin: 20px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      color: #333;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    input[type="submit"] {
+      background-color: #4caf50;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <h1>FLASK APP RUNNING</h1>
+  <h2>Please enter transaction information below:</h2>
+  <form method="POST">
+    {# This hidden_tag is a CSRF security feature. #} {{ form.hidden_tag() }} 
+    {{ form.ft_1.label }} {{form.ft_1}}
+    <br />
+    {{ form.ft_2.label}} {{form.ft_2}}
+    <br />
+    {{form.ft_3.label}}{{form.ft_3}}
+    <br />
+    {{form.ft_4.label}}{{form.ft_4}}
+    <br />
+    {{form.ft_5.label}}{{form.ft_5}}
+    <br />
+    {{form.ft_6.label}}{{form.ft_6}}
+    <br />
+    {{form.ft_7.label}}{{form.ft_7}}
+    <br />
+    {{ form.submit() }}
+  </form>
+</body>
+</html>

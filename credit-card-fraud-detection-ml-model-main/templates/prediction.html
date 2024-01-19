@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transaction Information</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f4;
+      text-align: center;
+      margin: 50px;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      background-color: #fff;
+      padding: 10px;
+      margin: 5px 0;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      color: #555;
+      margin-top: 20px;
+    }
+
+    .prediction {
+      font-size: 24px;
+      font-weight: bold;
+      color: #4caf50; /* Green color for positive prediction */
+    }
+
+    .prediction.negative {
+      color: #ff5252; /* Red color for negative prediction */
+    }
+  </style>
+</head>
+<body>
+  <h1>Thank You. Here is the Information You Gave:</h1>
+  <ul>
+    <li>Distance From Home: {{session['ft_1']}}</li>
+    <li>Distance From Location of Last Transaction: {{session['ft_2']}}</li>
+    <li>Ration to Median Purchase Price: {{session['ft_3']}}</li>
+    <li>Repeat Retailer?: {{session['ft_4']}}</li>
+    <li>Used Cheap?: {{session['ft_5']}}</li>
+    <li>Used Pin Number?: {{session['ft_6']}}</li>
+    <li>Online Transaction?: {{session['ft_7']}}</li>
+  </ul>
+  <h2 class="prediction {% if results == 'Fraudulent' %}negative{% else %}positive{% endif %}">
+    Prediction: This transaction is {{results}}
+  </h2>
+</body>
+</html>
