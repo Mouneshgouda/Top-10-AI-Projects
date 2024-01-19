@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="shortcut icon" href="static/img/logo-w.png" />
+    <title>SPAM Detector Website</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="head-nav">
+            <h3 style="font-size:10px; color:yellow; font-weight:bold; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Disclaimer :- Plesae Click on the three dot and click "Add to Home screen" for better view and quick access</h3>
+        </div>
+        <div class="logo-heading">
+            <img src="{{url_for('static', filename='img/logo-w.png')}}" alt="Spam Detector">
+        </div>
+        <div class="container-data">
+            <form action="/" method="post">
+                <textarea class="text-box" id="sentence" name="message" placeholder="Enter a message. Example: Upto 30% off on sale. Buy now!" onsubmit="return checkforblank()"></textarea>
+                <button type="submit" class="btn">CHECK</button>
+            </form>
+        </div>
+        <br> {% if message %}
+        <div class="show-result">
+            <div class="output">
+                <h3 style="color:black; font-size:22px; font-weight:bold; font-family:'Courier New', Courier, monospace; text-transform: uppercase;">{{message}}</h3>
+            </div>
+            <br> {% if result=='This Message is Not a SPAM Message.' %}
+            <div class="output-logo">
+                <img src="{{url_for('static', filename='img/spam-2.png')}}">
+            </div>
+            {% endif %} {% if result=='This Message is Not a SPAM Message.' %}
+            <div class="alert">
+                <audio controls autoplay>
+            <source src="{{url_for('static', filename='audio/safe.mpeg')}}" type="audio/mp3">
+        </audio>
+            </div>
+            {% endif %} {% if result=='This Message is a SPAM Message.' %}
+            <div class="output-logo">
+                <img src="{{url_for('static', filename='img/spam.png')}}">
+            </div>
+            {% endif %} {% if result=='This Message is Not a SPAM Message.' %}
+            <div class="output-not">{{result}}</div>
+            {% endif %} {% if result=='This Message is a SPAM Message.' %}
+            <div class="output">{{result}}</div>
+            {% endif %} {% if result=='This Message is a SPAM Message.' %}
+            <div class="alert">
+                <audio controls autoplay>
+            <source src="{{url_for('static', filename='audio/warning.mpeg')}}" type="audio/mp3">
+        </audio>
+            </div>
+            {% endif %}
+        </div>
+        {% else %}
+        <h3 style="color:red; padding:30px;font-size:35px; font-weight:bold; font-family:'Courier New', Courier, monospace; text-transform: uppercase;">.Enter A Message To Check The Message is SPAM or NOT-SPAM..</h3>
+        {% endif %}
+        <div class="head-git">
+        </div>
+        <div class="head">
+        </div>
+</body>
+
+</html>
